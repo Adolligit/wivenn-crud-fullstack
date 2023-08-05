@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Entities\DepartmentController;
+use App\Http\Controllers\Entities\EmployeeController;
+use App\Http\Controllers\Entities\TaskController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1'], function() {
-    Route::group(['prefix' => 'department'], base_path('routes/v1/DepartmentRoutes.php'));
-    Route::group(['prefix' => 'employee'], base_path('routes/v1/EmployeeRoutes.php'));
-    Route::group(['prefix' => 'task'], base_path('routes/v1/TaskRoutes.php'));
+    Route::apiResource('employee', EmployeeController::class);
+    Route::apiResource('department', DepartmentController::class);
+    Route::apiResource('task', TaskController::class);
 });
