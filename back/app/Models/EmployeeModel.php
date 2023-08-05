@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class EmployeeModel extends Model
 {
     use HasFactory;
 
     public function tasks()
     {
-        return $this->hasMany('App\Models\Task');
+        return $this->hasMany('App\Models\TaskModel');
     }
 
     public function department()

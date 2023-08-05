@@ -13,6 +13,6 @@ class DepartmentModel extends Model
 
     public function employees()
     {
-        return $this->hasMany('App\Models\Employee');
+        return $this->hasMany('App\Models\EmployeeModel');
     }
 }
