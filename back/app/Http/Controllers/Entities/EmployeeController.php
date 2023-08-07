@@ -4,47 +4,51 @@ namespace App\Http\Controllers\Entities;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
-use Illuminate\Http\Request;
+use App\Http\Requests\EmployeeRequest;
+use Illuminate\Http\Response;
 
 class EmployeeController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return Employee::all();
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
-        //
+        Employee::create($request->validated());
+        return response()->json($request, Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Employee $department)
     {
-        //
+        return $department;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EmployeeRequest $request, Employee $department)
     {
-        //
+        $department->update($request->validated());
+        return response()->json($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Employee $department)
     {
-        //
+        $department->deleteOrFail();
+        return response('',Response::HTTP_NO_CONTENT);
     }
 }

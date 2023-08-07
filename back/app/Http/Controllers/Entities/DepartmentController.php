@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Entities;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DepartmentRequest;
-use App\Models\DepartmentModel;
+use App\Models\Department;
 use Illuminate\Http\Response;
 
 class DepartmentController extends Controller
@@ -14,7 +14,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return DepartmentModel::all();
+        return Department::all();
     }
     
     /**
@@ -22,14 +22,14 @@ class DepartmentController extends Controller
      */
     public function store(DepartmentRequest $request)
     {
-        DepartmentModel::create($request->validated());
+        Department::create($request->validated());
         return response()->json($request, Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(DepartmentModel $department)
+    public function show(Department $department)
     {
         return $department;
     }
@@ -37,7 +37,7 @@ class DepartmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(DepartmentRequest $request, DepartmentModel $department)
+    public function update(DepartmentRequest $request, Department $department)
     {
         $department->update($request->validated());
         return response()->json($request);
@@ -46,7 +46,7 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DepartmentModel $department)
+    public function destroy(Department $department)
     {
         $department->deleteOrFail();
         return response('',Response::HTTP_NO_CONTENT);
