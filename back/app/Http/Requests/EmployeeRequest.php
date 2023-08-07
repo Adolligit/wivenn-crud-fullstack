@@ -22,7 +22,11 @@ class EmployeeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'firstName' => ['bail', 'required', 'string', 'min:3', 'max:254'],
+            'lastName' => ['bail', 'required', 'string', 'min:3', 'max:254'],
+            'email' => ['bail', 'required', 'email'],
+            'phone' => ['bail', 'string'],
+            'department_id' => ['bail', 'required','numeric']
         ];
     }
 }

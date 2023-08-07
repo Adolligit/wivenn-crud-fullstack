@@ -29,26 +29,26 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Employee $department)
+    public function show(Employee $employee)
     {
-        return $department;
+        return $employee;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(EmployeeRequest $request, Employee $department)
+    public function update(EmployeeRequest $request, Employee $employee)
     {
-        $department->update($request->validated());
+        $employee->update($request->validated());
         return response()->json($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employee $department)
+    public function destroy(Employee $employee)
     {
-        $department->deleteOrFail();
+        $employee->deleteOrFail();
         return response('',Response::HTTP_NO_CONTENT);
     }
 }
